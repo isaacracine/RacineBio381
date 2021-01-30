@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Follow the link to assignment 2!
 
--[Assignment 2](.\RacineBio381\Homework_02.html)
+- [Assignment 2](.\pages\Homework_02.html)
 
 
 
