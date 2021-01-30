@@ -1,0 +1,12 @@
+---
+title: "Homework_02"
+author: "Isaac Racine"
+date: "1/30/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This is my homework assignment 2 for Bio 381! R and github are fun!
