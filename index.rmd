@@ -7,6 +7,10 @@ output:
     theme: paper
 ---
 
+![Aug. 2020](/Users/isaac/Pictures/Thun2.jpg)
+
+Spring 2020 I went to study abroad in Germany, but was able to stay despite Coronavirus. So here is a photo of me at the Harder Kulm in Thun, Switzerland! 
+
 # Homeworks
 
 ## Homework 2
