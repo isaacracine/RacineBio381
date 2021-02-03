@@ -2,7 +2,9 @@
 title: "BIO381"
 author: "Isaac Racine"
 date: "Spring Semester of 2021"
-output: html_document
+output: 
+  html_document: 
+    theme: paper
 ---
 
 # Homeworks
