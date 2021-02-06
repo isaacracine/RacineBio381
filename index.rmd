@@ -15,7 +15,9 @@ Spring 2020 I went to study abroad in Germany, but was able to stay despite Coro
 
 ## Homework 2
 
-Follow the link to assignment 2!
-
 - [Assignment 2](.\Homework_02.html)
+
+## Homework 3
+
+- [Assignment 3](.\Homework_03.html)
 

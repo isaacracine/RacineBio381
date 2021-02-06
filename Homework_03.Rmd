@@ -1,0 +1,32 @@
+---
+title: "Homework_3"
+author: "Isaac Racine"
+date: "2/17/2021"
+output: html_document
+---
+
+Here are my answers to the questions for homework 3.
+
+```
+find:(\s{2, }[^\w\r])
+
+replace: ,
+```
+
+1. This answer is sooo close!
+
+  + sub-answer
+
+```
+find:
+
+replace:
+```
+2. answer
+
+
+
+
+
+
+[Homepage](.\index.html) 
