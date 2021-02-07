@@ -196,20 +196,50 @@ summary {
 
 
 <p>Here are my answers to the questions for homework 3.</p>
-<pre><code>find:(\s{2, }[^\w\r])
+<pre><code>find:\s{2, }[^\w]
 
-replace: ,</code></pre>
+replace:,</code></pre>
 <ol style="list-style-type: decimal">
-<li>This answer is sooo close!</li>
+<li>The first expression looks for anywhere with 2 or more spaces. The second expression looks for any character that is not a word character after 2 or more spaces. This replaces all of the spacing except for the spacing between the final two values in the second line of data. I am not sure why given that there are exactly two spaces followed by a digit.</li>
 </ol>
 <ul>
 <li>sub-answer</li>
 </ul>
-<pre><code>find:
+<pre><code>find:(\w+),\s*(\w+),\s*(.*)
 
-replace:</code></pre>
+replace:\2 \1 \(\3\)</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>answer</li>
+<li>The first capture is capturing the entire first word (collaborator’s last name). Then the , accounts for the comma present followed by \s* to account for the spaces. The second capture is capturing the entire second word (collaborator’s first name). The , accounts for the second comma present followed by \s* to account for the spaces. Finally the last capture captures the rest of the line (the collaborator’s institution). These captures were then rearranged in the correct order for the desired output.</li>
+</ol>
+<pre><code>find:\s(\d{4})
+
+replace:\n\1</code></pre>
+<ol start="3" style="list-style-type: decimal">
+<li>The \s finds a space. The next capture finds four digits. Together the space and four digits mark the start of a new recording. So to put each recording on its own line the space was replaced with a new line character followed by the reinsertion of the four digit code.</li>
+</ol>
+<pre><code>find:(\d{4})\s(.*)(\.\w\w\d)$
+
+replace:\2_\1\3</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li>The $ means the end of a line. For this problem I worked my way from end to start. The last capture searches for a . followed by two word characters and a single digit (.mp3). The second capture finds the rest of the all characters till the end of the string. The first capture followed by the \s finds the recording number and space that separates it from the recording’s name. The replace function then orders the captures so that it goes recording name, underscore, recording number, .mp3.</li>
+</ol>
+<pre><code>find:(\w)\w+,(\w+),\d+\.\d+,(\d+)
+
+replace:\1_\2,\3</code></pre>
+<ol start="5" style="list-style-type: decimal">
+<li>The first capture finds the first letter of the genus. The \w+ then finds the rest of the genus name followed by the comma. The second capture finds the entire species name followed by the comma. Then the \d+ finds the whole number part of the float values. The . finds the decimal place of the floats and the other \d+ catches the decimal values of the floats, followed by the comma. The final capture finds the integer values. Then the data is reorganized to genus first letter, underscore, species full name, a comma, then the integer value.</li>
+</ol>
+<pre><code>find:(\w)\w+,(\w{4})\w+,\d+\.\d+,(\d+)
+
+replace:\1_\2,\3</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>This answer is very similar to 5. The difference is that only the first four letters of the species name was saved in the second capture. Thus the \w+ following the second capture finds the rest of the word characters for the species name. The replace only prints the first four letters and not the entire specie’s name.</li>
+</ol>
+<pre><code>find:(\w{3})\w+,(\w{3})\w+,(\d+\.\d+),(\d+)
+
+replace:\1\2, \4, \3</code></pre>
+<ol start="7" style="list-style-type: decimal">
+<li>This answer is similar to 5 and 6. The first capture was changed to find the first three letters of the genus name. The second capture was modified to find the first three letters of the species name, not four. Then the float number notation was made into an capture, giving a total of 4 now. The replace was reorganized to make the first three letter of the genus and species be combined, without an underscore. This name combination is followed by a comma then space then the integer values then a comma then a space followed by the float values.</li>
 </ol>
 <p><a href=".\index.html">Homepage</a></p>
 
