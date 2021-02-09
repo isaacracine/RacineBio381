@@ -13,7 +13,7 @@ find:\s{2, }[^\w]
 replace:,
 ```
 
-1. The first expression looks for anywhere with 2 or more consecutive spaces. The second expression looks for any character that is not a word character after 2 or more spaces. This replaces all of the spacing except for the spacing between the final two values in the second line of data. I am not sure why given that there are exactly two spaces followed by a digit.
+1. The first expression looks for anywhere with 2 or more consecutive spaces. The second expression looks for any character that is not a word character after 2 or more spaces. This replaces all of the spacing except for the spacing between separate lines of data.
 
 
 
