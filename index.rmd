@@ -24,4 +24,8 @@ Spring 2020 I went to study abroad in Germany, but was able to stay despite Coro
 
 ### Homework 4
 
-- [Formatted Letter](.\LetterFormat.pdf)
+- [Typora](.\HW_4.html)
+
+- [LaTeX Letter](.\LetterFormat.pdf)
+
+- [LaTeX Beamer]
