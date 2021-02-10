@@ -3,21 +3,22 @@ title: "BIO381"
 author: "Isaac Racine"
 date: "Spring Semester of 2021"
 output: 
-  html_document: 
-    theme: paper
+  prettydoc::html_pretty:
+  theme: leonids
+  highlight: github
 ---
 
 ![Aug. 2020](/Users/isaac/Pictures/Thun2.jpg)
 
 Spring 2020 I went to study abroad in Germany, but was able to stay despite Coronavirus. So here is a photo of me at the Harder Kulm in Thun, Switzerland! 
 
-# Homeworks
+# Homework Assignments
 
-## Homework 2
+### Homework 2
 
 - [Assignment 2](.\Homework_02.html)
 
-## Homework 3
+### Homework 3
 
 - [Assignment 3](.\Homework_03.html)
 

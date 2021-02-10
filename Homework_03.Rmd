@@ -2,7 +2,10 @@
 title: "Homework_3"
 author: "Isaac Racine"
 date: "2/17/2021"
-output: html_document
+output: 
+  prettydoc::html_pretty:
+  theme: leonids
+  highlight: github
 ---
 
 Here are my answers to the questions for homework 3.
