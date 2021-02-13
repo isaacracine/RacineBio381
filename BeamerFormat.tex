@@ -153,28 +153,28 @@ Burlington, VT 05401 USA \\
 \begin{frame}
 \frametitle{Figure}
 % Uncomment the code on this slide to include your own image from the same directory as the template  file.
-\begin{figure}
-  \includegraphics[width=1.0\linewidth]{images/UVMLogoSolid_UVMgreen_1000w.jpg}
+%\begin{figure}
+  %\includegraphics[width=1.0\linewidth]{images/UVMLogoSolid_UVMgreen_1000w.jpg}
 % use this format for absolute sizing
 %\includegraphics[width=3cm, height=4cm]{filename.jpg}
-\end{figure}
+%\end{figure}
 \end{frame}
 
 % SLIDE (TABLE)----------------------------
 \begin{frame}
-\frametitle{Table}
-\begin{table}
-\begin{tabular}{l l l}
-\toprule
-\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-\midrule
-Treatment 1 & 0.0003262 & 0.562 \\
-Treatment 2 & 0.0015681 & 0.910 \\
-Treatment 3 & 0.0009271 & 0.296 \\
-\bottomrule
-\end{tabular}
-\caption{Table caption}
-\end{table}
+% \frametitle{Table}
+% \begin{table}
+% \begin{tabular}{l l l}
+% \toprule
+% \textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+% \midrule
+% Treatment 1 & 0.0003262 & 0.562 \\
+% Treatment 2 & 0.0015681 & 0.910 \\
+% Treatment 3 & 0.0009271 & 0.296 \\
+% \bottomrule
+% \end{tabular}
+% \caption{Table caption}
+% \end{table}
 \end{frame}
 
 %------------------------------------------------
@@ -215,8 +215,8 @@ Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenati
 \hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{)}
 \end{alltt}
 \begin{verbatim}
-##  [1] 0.94597817 0.08972281 0.08506732 0.86047615 0.56888055 0.05153459
-##  [7] 0.95635001 0.95458858 0.45737457 0.05573388
+##  [1] 0.451908222 0.444399468 0.498535858 0.597796603 0.518321256 0.117600980
+##  [7] 0.281020182 0.008983333 0.296914636 0.955612025
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
@@ -228,16 +228,10 @@ Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenati
 \begin{frame}[fragile]{Embedded R Figure; \texttt{fragile} frame}
 %\begin{block}
 
-\begin{knitrout}
-\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
-
-{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-2-1} 
-
-}
-
-
-
-\end{knitrout}
+%<<fig.align='center',fig.dim=c(2.5,2.5),echo=FALSE>>=
+%# limited space for output
+plot(runif(10))
+@
 
 %\end{block}
 \end{frame}

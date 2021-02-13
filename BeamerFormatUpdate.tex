@@ -12,7 +12,57 @@
 % Modified by Nicholas J. Gotelli
 % 9 January 2021
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[12pt]{beamer}
+\documentclass[12pt]{beamer}\usepackage[]{graphicx}\usepackage[]{color}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
 % only 10,11, or 12 pt fonts
 % PACKAGES-----------------------------------
 \usepackage{graphicx} % Allows including images
@@ -27,7 +77,7 @@
 \usetheme{Luebeck}
 % THEMES: default, AnnArbor, Antibes, Bergen, Berkeley, Berlin, Boadilla, boxes, CambridgeUS, Copenhagen, Darmstadt, Dresden, Frankfurt, Goettingen, Hannover, Ilmenau, JuanLesPins, Luebeck, Madrid, Malmoe, Marburg, Montpellier, PaloAlto, Pittsburgh, Rochester, Singapore, Szeged, Warsaw
 
-\usecolortheme{fly}
+\usecolortheme{default}
 %COLORTHEMES: default, albatross, beaver, beetle, crane, dolphin, dove, fly, lily, orchid, rose, seagull, seahorse, sidebartab, structure, whale, wolverine 
 
 % DISPLAY OPTIONS--------------------------
@@ -40,7 +90,7 @@
 % -----------------------------------------
 
 % TITLE PAGE DATA--------------------------
-\title[Practice]{My First Practice Presentation} % The short title appears at the bottom of every slide, the full title is only on the title page
+\title[Practice Beamer]{My Practice Beamer Presentation} % The short title appears at the bottom of every slide, the full title is only on the title page
 
 \author{Isaac Racine} % Your name
 
@@ -52,12 +102,12 @@ Burlington, VT 05401 USA \\
 \medskip
 \textit{iracine@uvm.edu} % Your email address
 }
-\date{10 Feb 2021} % Date, can be changed to a custom date or \today
+\date{13 Feb 2021} % Date, can be changed to a custom date or \today
 % -----------------------------------------
 
 % BEGIN DOCUMENT---------------------------
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
-\SweaveOpts{concordance=TRUE}
 
 % OPTIONAL TITLE PAGE SLIDE----------------
 \begin{frame}
@@ -72,9 +122,9 @@ Burlington, VT 05401 USA \\
 \end{frame}
 
 % OPTIONAL SECTION HEADERS-----------------
-\section{First Section} % Sections can be created in order to organize your presentation into discrete blocks; all sections and subsections are automatically printed in the table of contents as an overview of the talk
+\section{Bullet Points} % Sections can be created in order to organize your presentation into discrete blocks; all sections and subsections are automatically printed in the table of contents as an overview of the talk
 
-\subsection{Subsection Example} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+\subsection{Having bullets appear sequentially} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
 
 % SLIDE (BULLET POINTS)--------------------
 \begin{frame}
@@ -98,37 +148,37 @@ Burlington, VT 05401 USA \\
 \end{itemize}
 \end{frame}
 
+%------------------------------------------------
+\section{Table, Images and Plots}
+%------------------------------------------------
 % SLIDE (FIGURE)-----------------------------
 \begin{frame}
 \frametitle{Figure}
 % Uncomment the code on this slide to include your own image from the same directory as the template  file.
-%\begin{figure}
-  %\includegraphics[width=1.0\linewidth]{images/UVMLogoSolid_UVMgreen_1000w.jpg}
+\begin{figure}
+%  \includegraphics[width=1.0\linewidth]{images/UVMLogoSolid_UVMgreen_1000w.jpg}
 % use this format for absolute sizing
 %\includegraphics[width=3cm, height=4cm]{filename.jpg}
-%\end{figure}
+\end{figure}
 \end{frame}
 
 % SLIDE (TABLE)----------------------------
 \begin{frame}
-% \frametitle{Table}
-% \begin{table}
-% \begin{tabular}{l l l}
-% \toprule
-% \textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
-% \midrule
-% Treatment 1 & 0.0003262 & 0.562 \\
-% Treatment 2 & 0.0015681 & 0.910 \\
-% Treatment 3 & 0.0009271 & 0.296 \\
-% \bottomrule
-% \end{tabular}
-% \caption{Table caption}
-% \end{table}
+\frametitle{Table}
+\begin{table}
+\begin{tabular}{l l l}
+\toprule
+\textbf{Treatments} & \textbf{Response 1} & \textbf{Response 2}\\
+\midrule
+Treatment 1 & 0.0003262 & 0.562 \\
+Treatment 2 & 0.0015681 & 0.910 \\
+Treatment 3 & 0.0009271 & 0.296 \\
+\bottomrule
+\end{tabular}
+\caption{Table caption}
+\end{table}
 \end{frame}
 
-%------------------------------------------------
-\section{Second Section}
-%------------------------------------------------
 % SLIDE (PARAGRAPHS OF TEXT)---------------
 \begin{frame}
 \frametitle{Paragraphs of Text}
@@ -157,10 +207,18 @@ Suspendisse tincidunt sagittis gravida. Curabitur condimentum, enim sed venenati
 \begin{frame}[fragile]{Embedded R Code; \texttt{fragile} frame}
 \begin{block}
 
-<<>>=
-# show some output...
-runif(10)
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hlcom{# show some output...}
+\hlkwd{runif}\hlstd{(}\hlnum{10}\hlstd{)}
+\end{alltt}
+\begin{verbatim}
+##  [1] 0.44656491 0.03806034 0.47396882 0.65192314 0.39455087 0.73313275
+##  [7] 0.08272794 0.49889473 0.37993335 0.88111426
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
 
 \end{block}
 \end{frame}
@@ -169,10 +227,16 @@ runif(10)
 \begin{frame}[fragile]{Embedded R Figure; \texttt{fragile} frame}
 %\begin{block}
 
-%<<fig.align='center',fig.dim=c(2.5,2.5),echo=FALSE>>=
-%# limited space for output
-plot(runif(10))
-@
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}
+
+{\centering \includegraphics[width=\maxwidth]{figure/unnamed-chunk-2-1} 
+
+}
+
+
+
+\end{knitrout}
 
 %\end{block}
 \end{frame}
@@ -183,15 +247,16 @@ plot(runif(10))
 \begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
 
 \column{.45\textwidth} % Left column and width
-\textbf{Heading}
+\textbf{My likes}
 \begin{enumerate}
-\item Statement
-\item Explanation
-\item Example
+\item Skiing
+\item Traveling
+\item Craft Veer
+\item Vegetarian Cuisine
 \end{enumerate}
 
 \column{.5\textwidth} % Right column and width
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ultricies in feugiat rutrum, porttitor sit amet augue. Aliquam ut tortor mauris. Sed volutpat ante purus, quis accumsan dolor.
+I sure do have some expensive likes. Maybe I should go cross country skiing more and drink PBR to save up! Luckily, there are no chances to spend money on traveling right now. 
 
 \end{columns}
 \end{frame}
@@ -200,9 +265,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lectus nisl, ul
 % SLIDE (THEOREM)----------------------------
 \begin{frame}
 \frametitle{Theorem}
-\begin{theorem}[Mass--energy equivalence]
-$E = mc^2$
+\begin{theorem}[Electric Field Equation]
+$E = K*q / r^2$
 \end{theorem}
+I really should study for physics more often.
 \end{frame}
 
 % SLIDE (VERBATIM)---------------------------

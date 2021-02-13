@@ -59,7 +59,8 @@ print("This is an R code block")
 
 Some `in line` block quote
 
-## in line latex euqation: $\lim_{x \to \infty} \exp(-x) = 0$ !!
+
+Some in line latex euqation: $\lim_{x \to \infty} \exp(-x) = 0$ !!
 
 
 
@@ -86,6 +87,8 @@ simple tab:
 <p style="color:red">my text here</p>
 
 ==my== 
+
+
 
 
 

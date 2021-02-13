@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.11)  13 FEB 2021 14:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.11)  13 FEB 2021 15:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**BeamerFormat.tex
-(./BeamerFormat.tex
+**BeamerFormatUpdate.tex
+(./BeamerFormatUpdate.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-02-06>
 (c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamer.cls
@@ -795,15 +795,13 @@ themerectangles.sty)
 themewhale.sty)
 (c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamercolor
 themeorchid.sty))
-(c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamercolor
-themefly.sty)
 (c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backen
 d-pdftex.def
 File: l3backend-pdftex.def 2021-02-06 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count324
 \l__pdf_internal_box=\box72
-) (./BeamerFormat.aux)
-\openout1 = `BeamerFormat.aux'.
+) (./BeamerFormatUpdate.aux)
+\openout1 = `BeamerFormatUpdate.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
 LaTeX Font Info:    ... okay on input line 110.
@@ -889,9 +887,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 110.
 LaTeX Info: Redefining \pageref on input line 110.
 LaTeX Info: Redefining \nameref on input line 110.
- (./BeamerFormat.out) (./BeamerFormat.out)
+ (./BeamerFormatUpdate.out) (./BeamerFormatUpdate.out)
 \@outlinefile=\write5
-\openout5 = `BeamerFormat.out'.
+\openout5 = `BeamerFormatUpdate.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
 (Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 110.
@@ -959,24 +957,13 @@ Dictionary: translator-numbers-dictionary, Language: English
 (c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/translator/transla
 tor-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
-) (./BeamerFormat.nav)
-! Undefined control sequence.
-l.111 \SweaveOpts
-                 {concordance=TRUE}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [1{c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pd
-ftex.map}
+) (./BeamerFormatUpdate.nav) [1{c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-va
+r/fonts/map/pdftex/updmap/pdftex.map}
 
 ]
-[2] (./BeamerFormat.toc) [3
+(./BeamerFormatUpdate.toc) [2
+
+] [3
 
 ] [4
 
@@ -986,100 +973,111 @@ ftex.map}
 
 ] [7
 
-] [8
-
-] [9
-
-] [10
-
-] [11
-
 ]
-\openout4 = `BeamerFormat.vrb'.
-
-
-(./BeamerFormat.vrb
-LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 8.
-
-Overfull \hbox (180.53537pt too wide) in paragraph at lines 13--13
-[]\OT1/cmtt/m/n/12 ##  [1] 0.451908222 0.444399468 0.498535858 0.597796603 0.51
-8321256 0.117600980[] 
- []
-
-
-Overfull \hbox (32.3353pt too wide) in paragraph at lines 13--13
-[]\OT1/cmtt/m/n/12 ##  [7] 0.281020182 0.008983333 0.296914636 0.955612025[] 
- []
-
-) [12
-
-]
-\openout4 = `BeamerFormat.vrb'.
-
- (./BeamerFormat.vrb) [13
-
-]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 256
+LaTeX Font Info:    Trying to load font information for U+msa on input line 180
 .
 
 (c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 256
+LaTeX Font Info:    Trying to load font information for U+msb on input line 180
 .
 
 (c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-[14
+[8
 
-] [15
+] [9
 
 ]
-\openout4 = `BeamerFormat.vrb'.
+Overfull \vbox (24.61789pt too high) detected at line 204
+ []
 
- (./BeamerFormat.vrb) [16
+[10
 
-] [17
+]
+\openout4 = `BeamerFormatUpdate.vrb'.
+
+ (./BeamerFormatUpdate.vrb
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 8.
+
+Overfull \hbox (143.48535pt too wide) in paragraph at lines 13--13
+[]\OT1/cmtt/m/n/12 ##  [1] 0.44656491 0.03806034 0.47396882 0.65192314 0.394550
+87 0.73313275[] 
+ []
+
+
+Overfull \hbox (7.63528pt too wide) in paragraph at lines 13--13
+[]\OT1/cmtt/m/n/12 ##  [7] 0.08272794 0.49889473 0.37993335 0.88111426[] 
+ []
+
+) [11
+
+]
+\openout4 = `BeamerFormatUpdate.vrb'.
+
+ (./BeamerFormatUpdate.vrb
+<figure/unnamed-chunk-2-1.pdf, id=358, 180.675pt x 180.675pt>
+File: figure/unnamed-chunk-2-1.pdf Graphic file (type pdf)
+<use figure/unnamed-chunk-2-1.pdf>
+Package pdftex.def Info: figure/unnamed-chunk-2-1.pdf  used on input line 6.
+(pdftex.def)             Requested size: 180.67455pt x 180.67455pt.
+) [12
+
+ <./figure/unnamed-chunk-2-1.pdf>]
+[13
+
+] [14
+
+]
+\openout4 = `BeamerFormatUpdate.vrb'.
+
+ (./BeamerFormatUpdate.vrb) [15
+
+] [16
 
 ]
 \tf@nav=\write6
-\openout6 = `BeamerFormat.nav'.
+\openout6 = `BeamerFormatUpdate.nav'.
 
 \tf@toc=\write7
-\openout7 = `BeamerFormat.toc'.
+\openout7 = `BeamerFormatUpdate.toc'.
 
 \tf@snm=\write8
-\openout8 = `BeamerFormat.snm'.
+\openout8 = `BeamerFormatUpdate.snm'.
 
- (./BeamerFormat.aux)
-Package rerunfilecheck Info: File `BeamerFormat.out' has not changed.
-(rerunfilecheck)             Checksum: 26099A16AFEDEFB2387199F0ED7E3FDB;377.
+ (./BeamerFormatUpdate.aux)
+Package rerunfilecheck Info: File `BeamerFormatUpdate.out' has not changed.
+(rerunfilecheck)             Checksum: 6E6B12EC0FAAF2366B6F6BC23BFABD4B;514.
  ) 
 Here is how much of TeX's memory you used:
- 20393 strings out of 481250
- 385256 string characters out of 5914108
- 656315 words of memory out of 5000000
- 36837 multiletter control sequences out of 15000+600000
+ 20403 strings out of 481250
+ 385564 string characters out of 5914108
+ 659592 words of memory out of 5000000
+ 36850 multiletter control sequences out of 15000+600000
  411460 words of font info for 57 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 112i,19n,116p,487b,660s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 112i,19n,116p,493b,654s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmitt10.pfb><c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1
-/public/amsfonts/cm/cmss10.pfb><c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmss12.pfb><c:/Users/isaac/AppData/Roaming/Ti
-nyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb><c:/Users/isaac/AppD
-ata/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb><c:/Use
-rs/isaac/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmss
-bx10.pfb><c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/
-amsfonts/cm/cmssi12.pfb><c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/font
-s/type1/public/amsfonts/cm/cmssi8.pfb><c:/Users/isaac/AppData/Roaming/TinyTeX/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on BeamerFormat.pdf (17 pages, 111638 bytes).
+/public/amsfonts/cm/cmmi12.pfb><c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmss10.pfb><c:/Users/isaac/AppData/Roaming/Ti
+nyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmss12.pfb><c:/Users/isaac/AppD
+ata/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb><c:/Us
+ers/isaac/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+s8.pfb><c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/am
+sfonts/cm/cmssbx10.pfb><c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmssi12.pfb><c:/Users/isaac/AppData/Roaming/TinyTeX/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb><c:/Users/isaac/AppData/Roa
+ming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/isa
+ac/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb
+>
+Output written on BeamerFormatUpdate.pdf (16 pages, 135765 bytes).
 PDF statistics:
- 572 PDF objects out of 1000 (max. 8388607)
- 529 compressed objects within 6 object streams
- 38 named destinations out of 1000 (max. 500000)
- 67 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 553 PDF objects out of 1000 (max. 8388607)
+ 507 compressed objects within 6 object streams
+ 36 named destinations out of 1000 (max. 500000)
+ 72 words of extra memory for PDF output out of 10000 (max. 10000000)
 

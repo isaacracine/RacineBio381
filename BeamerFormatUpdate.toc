@@ -1,0 +1,3 @@
+\beamer@sectionintoc {1}{Bullet Points}{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{Having bullets appear sequentially}{3}{0}{1}
+\beamer@sectionintoc {2}{Table, Images and Plots}{7}{0}{2}
