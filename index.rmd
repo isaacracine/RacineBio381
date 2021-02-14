@@ -28,4 +28,4 @@ Spring 2020 I went to study abroad in Germany, but was able to stay despite Coro
 
 - [LaTeX Letter](.\LetterFormat.pdf)
 
-- [LaTeX Beamer]
+- [LaTeX Beamer](.\BeamerFormatUpdate.pdf)

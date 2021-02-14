@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.11)  13 FEB 2021 15:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2021.2.11)  14 FEB 2021 13:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -795,6 +795,10 @@ themerectangles.sty)
 themewhale.sty)
 (c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamercolor
 themeorchid.sty))
+(c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerouter
+thememiniframes.sty)
+(c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerinner
+themecircles.sty)
 (c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backen
 d-pdftex.def
 File: l3backend-pdftex.def 2021-02-06 L3 backend support: PDF output (pdfTeX)
@@ -803,24 +807,24 @@ File: l3backend-pdftex.def 2021-02-06 L3 backend support: PDF output (pdfTeX)
 ) (./BeamerFormatUpdate.aux)
 \openout1 = `BeamerFormatUpdate.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 110.
-LaTeX Font Info:    ... okay on input line 110.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 134.
+LaTeX Font Info:    ... okay on input line 134.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -868,7 +872,7 @@ df-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 110.
+Package hyperref Info: Link coloring OFF on input line 134.
 
 (c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.s
 ty
@@ -884,55 +888,55 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count325
 )
-LaTeX Info: Redefining \ref on input line 110.
-LaTeX Info: Redefining \pageref on input line 110.
-LaTeX Info: Redefining \nameref on input line 110.
+LaTeX Info: Redefining \ref on input line 134.
+LaTeX Info: Redefining \pageref on input line 134.
+LaTeX Info: Redefining \nameref on input line 134.
  (./BeamerFormatUpdate.out) (./BeamerFormatUpdate.out)
 \@outlinefile=\write5
 \openout5 = `BeamerFormatUpdate.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 110.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 134.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 110.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 134.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 110.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 110.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 134.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 134.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 110.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 134.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 110.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 110.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/b/n on input line 134.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 134.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 110.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 134.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 110.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 110.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 134.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 134.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 110.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 134.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 110.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 110.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 134.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 134.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 110.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 134.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 110.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 134.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 110.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 134.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 110.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 134.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 110.
+(Font)                  OT1/cmss/b/n --> OT1/cmr/b/n on input line 134.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 110.
+(Font)                  OT1/cmss/b/n --> OT1/cmss/b/n on input line 134.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 110.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/b/n on input line 134.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 110.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/b/it on input line 134.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 110.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/b/n on input line 134.
 
 (c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/translator/transla
 tor-basic-dictionary-English.dict
@@ -963,7 +967,20 @@ r/fonts/map/pdftex/updmap/pdftex.map}
 ]
 (./BeamerFormatUpdate.toc) [2
 
-] [3
+]
+LaTeX Font Info:    Trying to load font information for U+msa on input line 163
+.
+
+(c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 163
+.
+
+(c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+[3
 
 ] [4
 
@@ -971,72 +988,57 @@ r/fonts/map/pdftex/updmap/pdftex.map}
 
 ] [6
 
-] [7
-
 ]
-LaTeX Font Info:    Trying to load font information for U+msa on input line 180
-.
+<C:/Users/isaac/Pictures/Thun.jpg, id=290, 4047.12pt x 3035.34pt>
+File: C:/Users/isaac/Pictures/Thun.jpg Graphic file (type jpg)
+<use C:/Users/isaac/Pictures/Thun.jpg>
+Package pdftex.def Info: C:/Users/isaac/Pictures/Thun.jpg  used on input line 1
+87.
+(pdftex.def)             Requested size: 4047.11017pt x 3035.33263pt.
+ [7
 
-(c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Trying to load font information for U+msb on input line 180
-.
-
-(c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-[8
+ <c:/Users/isaac/Pictures/Thun.jpg>] [8
 
 ] [9
 
 ]
-Overfull \vbox (24.61789pt too high) detected at line 204
- []
-
-[10
-
-]
 \openout4 = `BeamerFormatUpdate.vrb'.
 
- (./BeamerFormatUpdate.vrb
+
+(./BeamerFormatUpdate.vrb
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 8.
-
-Overfull \hbox (143.48535pt too wide) in paragraph at lines 13--13
-[]\OT1/cmtt/m/n/12 ##  [1] 0.44656491 0.03806034 0.47396882 0.65192314 0.394550
-87 0.73313275[] 
- []
-
-
-Overfull \hbox (7.63528pt too wide) in paragraph at lines 13--13
-[]\OT1/cmtt/m/n/12 ##  [7] 0.08272794 0.49889473 0.37993335 0.88111426[] 
- []
-
-) [11
+) [10
 
 ]
 \openout4 = `BeamerFormatUpdate.vrb'.
 
  (./BeamerFormatUpdate.vrb
-<figure/unnamed-chunk-2-1.pdf, id=358, 180.675pt x 180.675pt>
+<figure/unnamed-chunk-2-1.pdf, id=444, 433.62pt x 289.08pt>
 File: figure/unnamed-chunk-2-1.pdf Graphic file (type pdf)
 <use figure/unnamed-chunk-2-1.pdf>
 Package pdftex.def Info: figure/unnamed-chunk-2-1.pdf  used on input line 6.
-(pdftex.def)             Requested size: 180.67455pt x 180.67455pt.
-) [12
+(pdftex.def)             Requested size: 307.28987pt x 204.86888pt.
+)
+Overfull \vbox (7.0467pt too high) detected at line 257
+ []
+
+[11
 
  <./figure/unnamed-chunk-2-1.pdf>]
-[13
+<figure/test-1.pdf, id=488, 505.89pt x 216.81pt>
+File: figure/test-1.pdf Graphic file (type pdf)
+<use figure/test-1.pdf>
+Package pdftex.def Info: figure/test-1.pdf  used on input line 265.
+(pdftex.def)             Requested size: 307.28987pt x 131.6981pt.
 
-] [14
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-]
-\openout4 = `BeamerFormatUpdate.vrb'.
+ [12
 
- (./BeamerFormatUpdate.vrb) [15
+ <./figure/test-1.pdf>] [13] [14
 
-] [16
+] [15
 
 ]
 \tf@nav=\write6
@@ -1053,13 +1055,13 @@ Package rerunfilecheck Info: File `BeamerFormatUpdate.out' has not changed.
 (rerunfilecheck)             Checksum: 6E6B12EC0FAAF2366B6F6BC23BFABD4B;514.
  ) 
 Here is how much of TeX's memory you used:
- 20403 strings out of 481250
- 385564 string characters out of 5914108
- 659592 words of memory out of 5000000
- 36850 multiletter control sequences out of 15000+600000
+ 20456 strings out of 481250
+ 387425 string characters out of 5914108
+ 676453 words of memory out of 5000000
+ 36896 multiletter control sequences out of 15000+600000
  411460 words of font info for 57 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 112i,19n,116p,493b,654s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 112i,19n,116p,493b,806s stack positions out of 5000i,500n,10000p,200000b,80000s
 <c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmitt10.pfb><c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1
 /public/amsfonts/cm/cmmi12.pfb><c:/Users/isaac/AppData/Roaming/TinyTeX/texmf-di
@@ -1074,10 +1076,10 @@ exmf-dist/fonts/type1/public/amsfonts/cm/cmssi8.pfb><c:/Users/isaac/AppData/Roa
 ming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/Users/isa
 ac/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb
 >
-Output written on BeamerFormatUpdate.pdf (16 pages, 135765 bytes).
+Output written on BeamerFormatUpdate.pdf (15 pages, 2325623 bytes).
 PDF statistics:
- 553 PDF objects out of 1000 (max. 8388607)
- 507 compressed objects within 6 object streams
- 36 named destinations out of 1000 (max. 500000)
- 72 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 694 PDF objects out of 1000 (max. 8388607)
+ 635 compressed objects within 7 object streams
+ 35 named destinations out of 1000 (max. 500000)
+ 82 words of extra memory for PDF output out of 10000 (max. 10000000)
 
