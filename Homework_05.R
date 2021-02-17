@@ -1,0 +1,112 @@
+# Homework 5 Assignment
+# 2/17/21
+# Isaac Racine
+# Bio381
+
+#----------------------------------------------
+# Question 1:
+x <- 1.1
+a <- 2.2
+b <- 3.3
+
+# part a
+z <- x ^ (a ^ b) 
+print(z)
+
+# part b
+z <- (x ^ a) ^ b
+print(z)
+
+# part c
+z <- (3 * x ^ 3) + (2 * x ^ 2) + 1
+print(z)
+
+#-----------------------------------------------
+# Question 2
+# part a
+vec_a <- c(seq(from = 1, to = 8),
+           seq(from = 7, to = 1, by = -1))
+print(vec_a)
+
+# part b
+vec_b <- rep(1:5, c(1:5))
+print(vec_b)
+
+# part c
+vec_c <- rep(seq(from = 5, to = 1, by = -1), c(1:5))
+print(vec_c)
+
+#----------------------------------------------
+# Question 3
+set.seed(10)
+vec_rand <- runif(2)
+
+# assuming the first element is opposite
+# and the second element is adjacent
+polar_theta = atan(vec_rand[1]/vec_rand[2])
+
+# pythagorean theorem
+polar_r = ((vec_rand[1] ^ 2) + (vec_rand[2] ^ 2)) ^ 0.5 
+
+# save the coordinates in correct format
+polar_coord <- paste(c("(",round(polar_r, digits = 3),
+                       ",", round(polar_theta, digits = 3),
+                       ")"), collapse = "")
+
+#print them
+#since once is theta will need to import greekletters
+library(greekLetters)
+coord <- paste(c("Here is the polar cordinate (r,", greeks("theta"),
+                 ") : ",polar_coord), collapse = "")
+print(coord)
+
+#---------------------------------------------
+# Question 4
+queue <- c("sheep", "fox", "owl", "ant")
+
+# part a
+queue_a <- c(queue, "serpent")
+print(queue_a)
+
+# part b
+queue_b <- queue_a[-1]
+print(queue_b)
+
+# part c
+queue_c <- c("donkey", queue_b)
+print(queue_c)
+
+# part d
+# can be done with indexing because a small vector
+queue_d <- queue_c[-5]
+print(queue_d)
+# or can be done with pipelining
+queue_d <- queue_c[!queue_c %in% "serpent"]
+print(queue_d)
+
+# part e
+# can be done with indexing because a small vector
+queue_e <- queue_d[-3]
+print(queue_e)
+# or can be done with pipelining
+queue_e <- queue_d[!queue_d %in% "owl"]
+print(queue_e)
+
+# part f
+queue_f <- c(queue_e[1:2], "aphid", queue_e[3])
+print(queue_f)
+
+# part g
+pos_aphid <- which(queue_f == "aphid")
+print(pos_aphid)
+
+#------------------------------------------------
+# Question 5
+vec_not_divis <- c(1:100)
+#Remove numbers that are divisible by 2
+vec_not_divis <- vec_not_divis[which(vec_not_divis %% 2 != 0)]
+#Remove numbers that are divisible by 3
+vec_not_divis <- vec_not_divis[which(vec_not_divis %% 3 != 0)]
+#Remove numbers that are divisible by 7
+vec_not_divis <- vec_not_divis[which(vec_not_divis %% 7 != 0)]
+print(vec_not_divis)
