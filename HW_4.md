@@ -30,7 +30,7 @@ Ordered list:
 
 
 
-Linebreak!
+Linebreak!  \n
 
 
 
@@ -98,17 +98,26 @@ ____
 
 Cause-and-Effect Diagram:
 
-![CauseEffect](C:\Users\isaac\Pictures\CauseEffect.jpg)
+![CauseEffect](C:\Users\isaac\Pictures\CauseAndEffect.jpg)
 
 
 
-~~~gfm
-```sequence
-Genotype->Phenotype: genetic code to protein expression
-Phenotype-->Disease: morbidity
-Phenotype-->Healthy: "normal"
+```mermaid
+graph TB
+id1[Sickle Cell Disease] 
+id1 --> id3
+id1 --> id4
+id2[Malaria]
+id3[Healthy]
+id3 --> |not protected from|id2
+id4[Sick]
+id4 --> |protected from| id2
+id2-.->|will cause increase in genotype|id1
 ```
-~~~
+
+
+
+   
 
 
 
