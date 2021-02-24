@@ -30,7 +30,7 @@ Ordered list:
 
 
 
-Linebreak!  \n
+Linebreak!  
 
 
 
@@ -42,7 +42,9 @@ link:
 
 image:
 
-![Thun](C:\Users\isaac\Pictures\Thun2.jpg)
+![Thun](https://github.com/isaacracine/RacineBio381/blob/main/Thun.jpg?raw=true)
+
+
 
 > Block Quote!!
 
@@ -98,7 +100,9 @@ ____
 
 Cause-and-Effect Diagram:
 
-![CauseEffect](C:\Users\isaac\Pictures\CauseAndEffect.jpg)
+![CauseAndEffect](https://github.com/isaacracine/RacineBio381/blob/main/CauseAndEffect.jpg?raw=TRUE)
+
+
 
 
 

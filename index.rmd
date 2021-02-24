@@ -35,4 +35,7 @@ Spring 2020 I went to study abroad in Germany, but was able to stay despite Coro
 - [Assignment 5](.\Homework_05.html)
 
 ### Homework 6
+
 - [Assignment 6](.\Homework_06.html)
+
+### Homework 7
