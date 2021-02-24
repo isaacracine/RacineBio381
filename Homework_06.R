@@ -1,0 +1,135 @@
+# Homework 6 Assignment
+# 2/24/21
+# Isaac Racine
+# Bio381
+
+#----------------------------------------------
+# Question 1: Assign to the variable n_dims a single random integer between 3 and 10.
+
+n_dims <- as.integer(runif(n = 1, min = 3.0, max = 10.0))
+print(n_dims)
+
+#Create a vector of consecutive integers from 1 to n_dims^2.
+vec_a <- c(1:(n_dims * n_dims))
+print(vec_a)
+
+#Use the sample function to randomly reshuffle these values.
+vec_shuffle <- sample(x = vec_a)
+print(vec_shuffle)
+
+#create a square matrix with these elements
+matrix <- matrix(data = vec_shuffle, nrow = n_dims)
+
+#print out the matrix.
+print(matrix)
+
+#find a function in r to transpose the matrix.
+transpose_m <- t(matrix)
+
+#print it out again and note how it has changed.
+print(transpose_m)
+print("A transposed matrix flips the index of the column and row number for each value. Thus values along the diagonal of the matrix do not move.")
+
+#calculate the sum and the mean of the elements in the first row and the last row
+sum_first <- sum(transpose_m[1,])
+mean_first <- mean(transpose_m[1,])
+print(sum_first)
+print(mean_first)
+
+sum_last <- sum(transpose_m[n_dims,])
+mean_last <- mean(transpose_m[n_dims,])
+print(sum_last)
+print(mean_last)
+
+#read about the eigen() function and use it on your matrix
+eigen_m <- eigen(x = transpose_m)
+print(eigen_m)
+
+#eigen_m$values returns the eigen values
+#these are contained in a vector and eigenvalues are 
+#of the transpose_m matrix imaginary numbers
+eigen_m$values
+
+#eigen_m$vectors returns the eigen vectors
+#returns a matrix of eigen values multiplied by
+#oneself for columns containing eigen vector
+#transpose_m and are imaginary numbers
+eigen_m$vectors
+
+#dig in with the typeof() function to figure out their type.
+#this returns a complex type of value
+print(typeof(eigen_m$vectors))
+print(typeof(eigen_m$values))
+
+#if have set your code up properly, you should be able to re-run it and create a matrix of different size because n_dims will change.
+print("Yes! I did this correctly.")
+
+#------------------------------------------
+#Question 2:Create a list with the following named elements
+#my_matrix, which is a 4 x 4 matrix filled with random uniform values
+#my_logical which is a 100-element vector of TRUE or FALSE values.
+#my_letters, which is a 26-element vector of all the lower-case letters in random order
+my_list <- list(my_matrix = matrix(runif(16), nrow=4),
+                my_logical = runif(100) < 0.5,
+                my_letters = sample(letters))
+
+print(my_list)
+
+
+#create a new list, which has the element[2,2] from the matrix, the second element of the logical vector, and the second element of the letters vector.
+new_list <- list(my_list$my_matrix[2,2], 
+                 my_list$my_logical[2],
+                 my_list$my_letters[2])
+print(new_list)
+ 
+#use the typeof() function to confirm the underlying data types of each component in this list
+type1 <- typeof(new_list[[1]])
+type2 <- typeof(new_list[[2]])
+type3 <- typeof(new_list[[3]])
+print(type1)
+print(type2)
+print(type3)
+
+#combine the underlying elements from the new list into a single atomic vector with the c() function.
+final_vec <- c(new_list[[1]], new_list[[2]],
+               new_list[[3]])
+
+print(final_vec)
+
+#what is the data type of this vector?
+print(typeof(final_vec))
+
+
+#----------------------------------------
+#Question 3:Create a data frame with two variables (= columns) and 26 cases (= rows).
+
+#call the first variable my_unis and fill it with 26 random uniform values from 0 to 10.
+
+#call the second variable my_letters and fill it with 26 capital letters in random order.
+df <- data.frame(my_unis = as.integer(runif(n = 26,
+                                 min = 0,
+                                 max = 10)),
+                 my_letters = sample(LETTERS))
+print(df)
+
+#for the first variable, use a single line of code in R to select 4 random rows and replace the numerical values in those rows with NA
+df[sample(nrow(df), 4), 'my_unis'] <- NA
+print(df)
+
+#for the first variable, write a single line of R code to identify which rows have the missing values
+
+#This shows the rows with NAs
+missing_values <- df[is.na(df$my_unis),]
+print(missing_values)
+
+#This shows the indexes of rows with NAs
+n <- which(is.na(df))
+print(n)  
+
+#for the second variable, sort it in alphabetical order
+df$my_letters<- sort(df$my_letters)
+print(df)
+
+#calculate the column mean for the first variable.
+mean <- mean(df$my_unis, na.rm = TRUE)
+print(mean)
