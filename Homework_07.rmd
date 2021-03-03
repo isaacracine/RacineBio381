@@ -1,0 +1,219 @@
+---
+title: "Homework_07"
+author: "Isaac Racine"
+date: "3/3/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Open libraries
+```{r}
+library(ggplot2) # for graphics
+library(MASS) # for maximum likelihood estimation
+```
+
+
+## Read in data vector
+I have loaded in data on offspring counts.
+
+```{r}
+
+z <- read.table("F1offspring.txt",header=TRUE,sep="\t", stringsAsFactors=FALSE) #is a TSV
+str(z)
+
+#add ID column and offspring count to new dataframe
+z <- data.frame(1:nrow(z),z$offspring) 
+names(z) <- list("ID","myVar")
+
+#remove NAs
+z <- na.omit(z)
+
+#Add 1 to each because of gamma distribution
+z$myVar <- z[,2] + 1  
+summary(z)
+
+#To illustrate, we will generate some fake data here:
+# quick and dirty, a truncated normal distribution to work on the solution set
+# 
+# z <- rnorm(n=3000,mean=0.2)
+# z <- data.frame(1:3000,z)
+# names(z) <- list("ID","myVar")
+# z <- z[z$myVar>0,]
+# str(z)
+# summary(z$myVar)
+```
+
+In the third step of this exercise, you will substitute in your own data for this fake data set. But for now, use the code chunks below to see how you fit different statistical distributions to a vector of observations, and then estimate the maximum likelihood parameters for each distribution.
+
+## Plot histogram of data
+Plot a histogram of the data, using a modification of the code from lecture. Here we are switching from qplot to ggplot for more graphics options. We are also rescaling the y axis of the histogram from counts to density, so that the area under the histogram equals 1.0.
+
+```{r}
+p1 <- ggplot(data=z, aes(x=myVar, y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) 
+print(p1) #plots just the histogram of the data
+```
+
+## Add empirical density curve
+Now modify the code to add in a kernel density plot of the data. This is an empirical curve that is fitted to the data. It does not assume any particular probability distribution, but it smooths out the shape of the histogram:
+
+```{r}
+p1 <-  p1 +  geom_density(linetype="dotted",size=0.75)
+print(p1) #add empirical density curve
+```
+
+## Get maximum likelihood parameters for normal
+Next, fit a normal distribution to your data and grab the maximum likelihood estimators of the two parameters of the normal, the mean and the variance:
+
+```{r}
+#fit data to normal and print parameters
+normPars <- fitdistr(z$myVar,"normal")
+print(normPars)
+str(normPars)
+normPars$estimate["mean"] # note structure of getting a named attribute
+```
+
+## Plot normal probability density
+Now let’s call the dnorm function inside ggplot’s stat_function to generate the probability density for the normal distribution. Read about stat_function in the help system to see how you can use this to add a smooth function to any ggplot. Note that we first get the maximum likelihood parameters for a normal distribution fitted to thse data by calling fitdistr. Then we pass those parameters (meanML and sdML to stat_function:
+
+```{r}
+#Save values of distribution parameters as variables to construct normal distribution plot
+meanML <- normPars$estimate["mean"]
+sdML <- normPars$estimate["sd"]
+
+xval <- seq(0,max(z$myVar),len=length(z$myVar))
+
+ stat <- stat_function(aes(x = xval, y = ..y..), fun = dnorm, colour="red", n = length(z$myVar), args = list(mean = meanML, sd = sdML))
+ p1 + stat  #Adds normal curve to plot
+```
+
+Notice that the best-fitting normal distribution (red curve) for these data actually has a biased mean. That is because the data set has no negative values, so the normal distribution (which is symmetric) is not working well.
+
+## Plot exponential probability density
+Now let’s use the same template and add in the curve for the exponential:
+
+```{r}
+#Fit data to exponential distribution
+#Save paramters as valyes
+expoPars <- fitdistr(z$myVar,"exponential")
+rateML <- expoPars$estimate["rate"]
+
+stat2 <- stat_function(aes(x = xval, y = ..y..), fun = dexp, colour="blue", n = length(z$myVar), args = list(rate=rateML))
+ p1 + stat + stat2  #adds exponential curve to plot
+```
+ 
+## Plot uniform probability density
+For the uniform, we don’t need to use fitdistr because the maximum likelihood estimators of the two parameters are just the minimum and the maximum of the data:
+
+```{r}
+stat3 <- stat_function(aes(x = xval, y = ..y..), fun = dunif, colour="darkgreen", n = length(z$myVar), args = list(min=min(z$myVar), max=max(z$myVar)))
+ p1 + stat + stat2 + stat3  #adds uniform curve to plot
+```
+
+## Plot gamma probability density
+There can be no values of 0 for this distribtuon, that is why I added 1 to all of the data points. 
+
+```{r}
+#Pass data to distribution and save parameters as variables for constructing a plot
+gammaPars <- fitdistr(z$myVar,"gamma")
+shapeML <- gammaPars$estimate["shape"]
+rateML <- gammaPars$estimate["rate"]
+
+stat4 <- stat_function(aes(x = xval, y = ..y..), fun = dgamma, colour="brown", n = length(z$myVar), args = list(shape=shapeML, rate=rateML))
+ p1 + stat + stat2 + stat3 + stat4 #Adds gamma curve to plot
+```
+
+## Plot beta probability density
+This one has to be shown in its own plot because the raw data must be rescaled so they are between 0 and 1, and then they can be compared to the beta.
+
+```{r}
+#Create another plot of data, but so that distribution is between 0 and 1, the last line adds the normla curve
+pSpecial <- ggplot(data=z, aes(x=myVar/(max(myVar + 0.1)), y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) +
+  xlim(c(0,1)) +
+  geom_density(size=0.75,linetype="dotted")
+
+#pass data to beta distribution and save parameters as vars
+betaPars <- fitdistr(x=z$myVar/max(z$myVar + 0.1),start=list(shape1=1,shape2=2),"beta")
+shape1ML <- betaPars$estimate["shape1"]
+shape2ML <- betaPars$estimate["shape2"]
+
+#Construct the beta curve
+statSpecial <- stat_function(aes(x = xval, y = ..y..), fun = dbeta, colour="orchid", n = length(z$myVar), args = list(shape1=shape1ML,shape2=shape2ML))
+pSpecial + statSpecial  #plots beta curve onto plot
+```
+
+## Part 4
+Gamma distribution often fits the data pretty well, but that is because we have assumed the largest data point is the true upper bound, and everything is scaled to that. The fit of the uniform distribution also fixes the upper bound. The other curves (normal, exponential, and gamma) are more realistic because they do not have an upper bound. For most data sets, the gamma will probably fit best, but if you data set is small, it may be very hard to see much of a difference between the curves.
+
+
+## Part 5
+Using the best-fitting distribution, go back to the code and get the maximum likelihood parameters. Use those to simulate a new data set, with the same length as your original vector, and plot that in a histogram and add the probability density curve. Right below that, generate a fresh histogram plot of the original data, and also include the probability density curve.
+
+>The normal distribution was visual the best fit to the data.
+
+```{r}
+#Let's pass the data to the normal distribution to get parameters
+#fit data to normal and print parameters
+normPars <- fitdistr(z$myVar,"normal")
+print(normPars)
+str(normPars)
+normPars$estimate["mean"] 
+
+#Save values of distribution parameters as variables to construct normal distribution plot
+meanML <- normPars$estimate["mean"]
+sdML <- normPars$estimate["sd"]
+
+#Create same amount of samples as in original data
+#but using the normal distribution MLH parameters to 
+#simulate this new data set
+x <- rnorm(nrow(z), mean = meanML, sd = sdML)
+typeof(x)
+x <- data.frame(1:nrow(z),x) 
+names(x) <- list("ID","myVar")
+
+#Make a histogram and add the probabulity density cruve
+plot_norm <- ggplot(data=x, aes(x=myVar, y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) + 
+  geom_density(linetype="dotted",size=0.75)
+print(plot_norm)
+
+#Simulate a gamma distribution
+#Pass data to distribution and save parameters as variables for constructing a plot
+gammaPars <- fitdistr(z$myVar,"gamma")
+shapeML <- gammaPars$estimate["shape"]
+rateML <- gammaPars$estimate["rate"]
+y <- sort(rgamma(n = nrow(z), shape = shapeML, scale = rateML))
+y <- data.frame(1:nrow(z), y)
+names(y) <- list("ID", "myVar")
+
+plot_gamma <- ggplot(data=y, aes(x=myVar, y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) + 
+  geom_density(linetype="dotted",size=0.75)
+print(plot_gamma)
+
+
+
+ 
+ #plot just the histogram of the original data
+p2 <- ggplot(data=z, aes(x=myVar, y=..density..)) +
+  geom_histogram(color="grey60",fill="cornsilk",size=0.2) + 
+  geom_density(linetype="dotted",size=0.75)
+print(p2) 
+```
+
+How do the two histogram profiles compare? Do you think the model is doing a good job of simulating realistic data that match your original measurements? Why or why not?
+
+>They differ a lot. The normal simulated data has negative values, which can not be true given the data is counting offspring. The simulated data is more symmetrical and not as skewed as the actual data. The model isn't doing a good job of simulating the realistic data because of the lack of skewness and inclusion of non positive values. However, the mean is roughly the same, but that is because of sing the parameters of the actual data in the simulated data. 
+
+>The gamma simulated data also differs a lot from the true data. The x-axis is a proprotion from 0 to 1, so the x -axis is not representative of true values. However, the gamma did a better job of encompassing the skew from the true data. Overall the true data may need to undergo some data transformations for a model to be applicable to it. The real data mauy be hard to replicate with it having several peaks.
+
+If you have entered a large data frame with many columns, try running all of the code on a different variable to see how the simulation performs.
+
+>My other data is only categorical.
+
+
+[Homepage](.\index.html) 
