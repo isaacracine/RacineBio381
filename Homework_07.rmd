@@ -5,9 +5,7 @@ date: "3/3/2021"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+Data was acquired from: https://datadryad.org/stash/dataset/doi:10.5061/dryad.12jm63xx6. 
 
 ## Open libraries
 ```{r}

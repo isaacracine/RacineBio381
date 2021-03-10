@@ -1,0 +1,346 @@
+---
+title: "Homework_08.Rmd"
+author: "Isaac Racine"
+date: "3/10/2021"
+output: html_document
+---
+# Obtaining Data
+
+I obtained data from [here](https://datadryad.org/stash/dataset/doi:10.5061/dryad.82vr4). The data was looking at above ground biomass of plots of forests and recorded their age. Plots age was determined by how many years it had gone undisturbed. Originally some of the data had OG (old-growth) for the plots age because it was too old to determine. However, to make things cohesive I replaced these values with 200 after seeing the other values for ages.  
+
+```{r}
+library(ggplot2)
+library(tidyverse)
+library(MASS)
+
+z <- read.table("AbovegroundData.csv",header=TRUE,sep=",", stringsAsFactors=FALSE)
+
+#add ID column, index age and biomass to new dataframe
+z <- data.frame(1:nrow(z),z$Age, z$AGB) 
+names(z) <- list("ID","Age","Biomass")
+
+
+#change Age's with OG to 200
+#OG meant they were too old to detemine an age
+#we will put in age of 200
+z <- z %>%
+  mutate(Age = str_replace(Age, "OG", "200"))
+
+
+
+#change age from char to int
+z$Age <- as.numeric(as.character(z$Age))
+
+#see summary
+summary(z)
+```
+
+# Data Manipulation
+
+After reading the paper associated with the data I decided to group the ages into young (20 years and younger), middle (21-199 years) and old (200 or OG) plots. This allowed for a hypothesis to be formulated. 
+
+```
+If a plot is older in the years it has gone undistrubed then the plot should have a larger quantity of biomass because there has been more time for undistrubed growth.
+```
+
+```{r}
+#Can group ages into treatments
+#0-20 is young
+#21-199 is middle
+#200+ is old
+z <- split(z, cut(z$Age, c(0,20,199,200), include.lowest = TRUE))
+```
+
+# Getting parameters for normal distribution
+
+Now that the data was groupped accordingly the number of trials, mean and variance for each treatment could be calculated. These values were then used to simulate data for each treatment and regroupped into one dataframe. However, upon running the ANOVA analysis there was seemingly no way that the simulated data could make a significant result. Thus, to make the data ideal for the remainder of this assignment the variance was reduced somewhat proportionally to the variance of each group. This allowed for the simulated data to be useable.
+
+```{r}
+#Now that they're split here are their summary stats
+#Group Young
+young_num <- length(z$`[0,20]`$Biomass)
+young_mean <- mean(z$`[0,20]`$Biomass)
+young_var <- var(z$`[0,20]`$Biomass)/20
+
+#Group Middle
+middle_num <- length(z$`(20,199]`$Biomass)
+middle_mean <- mean(z$`(20,199]`$Biomass)
+middle_var <- var(z$`(20,199]`$Biomass)/90
+
+#Group Old
+old_num <- length(z$`(199,200]`$Biomass)
+old_mean <- mean(z$`(199,200]`$Biomass)
+old_var <- var(z$`(199,200]`$Biomass)/100
+
+#The variation of the groups were very large. To make the data actually significantly different I had to lessen the variation.
+#-------------- Creating Simulated (Radnom) Data --------------
+#First run the number of simulated data points needed 
+#for each treatment group
+young_data <- rnorm(young_num, young_mean, young_var)
+
+middle_data <- rnorm(middle_num, middle_mean, middle_var)
+
+old_data <- rnorm(old_num, old_mean, old_var)
+
+#combine the treatment randomly generated biomass
+#into one vector
+vec_biomass <- c(young_data, middle_data, old_data)
+
+#make vector to hold the treatment name
+vec_treatment <- c(rep("Young", young_num), rep("Middle", middle_num), rep("Old", old_num))
+
+#Create the data frame and give it names
+rand_data <- data.frame(1:(young_num+middle_num+old_num),
+                        vec_treatment, vec_biomass)
+names(rand_data) <- list("ID", "Treatment", "Biomass")
+head(rand_data)
+```
+
+# First ANOVA Test (Question 4)
+
+The data was manipulated so that the simulated data would always make a significant output. Here are the results and a plot of the ANOVA.
+
+```{r}
+#-------------- Make Model and PLot ---------------
+#Here we will make an ANOVA test and plot
+ANOmodel <- aov(Biomass~Treatment,data=rand_data)
+print(summary(ANOmodel))
+
+ANOplot <- ggplot(data=rand_data, aes(x=Treatment, y=Biomass,
+                                      fill = Treatment)) +
+  geom_boxplot()
+print(ANOplot)
+```
+
+# Adjusting Means to Test Effect Size (Question 5)
+
+In an attempt to reduce the effect size to the smallest value possible while also maintaining significant results I tried changing the means of some treatments. Since the middle group had mean about 100 units above the young and 100 units below the old it seemed best to set the young and old mean values to the middle and work from there. After testing several values it seems that the smallest effect size was 140, or there was a difference of 140 between means of different groups. However, compared to the effect size of 200 that was given with the original data this effect size has reduced greatly. The means would be more reducible if the data was being simulated with a gamma distribution, given that biomass can't be below 0. Luckily, the large sample sizes of the groups allowed for even some recognizable changes in the means to still produce significant results.
+
+```{r}
+young_data1 <- rnorm(young_num, middle_mean-70, young_var)
+middle_data1 <- rnorm(middle_num, middle_mean, middle_var)
+old_data1 <- rnorm(old_num, middle_mean+70, old_var)
+
+#combine the treatment randomly generated biomass
+#into one vector
+vec_biomass1 <- c(young_data1, middle_data1, old_data1)
+
+#Create the data frame and give it names
+rand_data1 <- data.frame(1:(young_num+middle_num+old_num),
+                        vec_treatment, vec_biomass1)
+names(rand_data1) <- list("ID", "Treatment", "Biomass")
+
+#Here we will make an ANOVA test and plot
+ANOmodel <- aov(Biomass~Treatment,data=rand_data1)
+print(summary(ANOmodel))
+
+ANOplot <- ggplot(data=rand_data1, aes(x=Treatment, y=Biomass,
+                                      fill = Treatment)) +
+  geom_boxplot()
+print(ANOplot)
+```
+
+# Adjusting Sample Size (Question 7)
+
+The sample size was reduced in an attempt to see how little data could replicate significant results with the groups original means. The sample sizes were rather large, with over 1000 samples in total. Since the samples were more similar in size then their trial numbers were all divided by the same factor. However, with varying variances, since the manipulated data tried to keep the variance proportionate across groups, it seems that the size could not be reduced more than by a factor of 2.7. However, this would mean roughly less than 400 samples being compared. The more sample the stronger the data, however these size of groups could still produce mostly significant results.
+
+```{r}
+#-------------- Testing Sample Size ---------------
+#try to simulate data with smaller to see the minimum sample size needed to still have significant results
+young_data2 <- rnorm(ceiling(young_num/2.7), young_mean, young_var)
+middle_data2 <- rnorm(ceiling(middle_num/2.7), middle_mean, middle_var)
+old_data2 <- rnorm(ceiling(old_num/2.7), old_mean, old_var)
+
+#combine the treatment randomly generated biomass
+#into one vector
+vec_biomass2 <- c(young_data2, middle_data2, old_data2)
+vec_treatment2 <- c(rep("Young", ceiling(young_num/2.7)), rep("Middle", ceiling(middle_num/2.7)), rep("Old", ceiling(old_num/2.7)))
+
+#Create the data frame and give it names
+rand_data2 <- data.frame(1:(ceiling(young_num/2.7)+ceiling(middle_num/2.7)+ceiling(old_num/2.7)),
+                         vec_treatment2, vec_biomass2)
+names(rand_data2) <- list("ID", "Treatment", "Biomass")
+
+#Here we will make an ANOVA test and plot
+ANOmodel <- aov(Biomass~Treatment,data=rand_data2)
+print(summary(ANOmodel))
+
+ANOplot <- ggplot(data=rand_data2, aes(x=Treatment, y=Biomass,
+                                       fill = Treatment)) +
+  geom_boxplot()
+print(ANOplot)
+
+```
+
+# Question 9 -> Using Gamma instead of Normal
+
+This part asked to simmulate the data with a more complex distribution. This worked heavily in my favor. Gamma disributions can't be less than 0 which is applicable to biomass as nothing can weight 0 or less. Thus I redid all of parts above just with the gamma distribution. Since I was using gamma to simulate data the variances didn't have to be manipulated to make the simulated data significant.
+
+```{r}
+z <- read.table("AbovegroundData.csv",header=TRUE,sep=",", stringsAsFactors=FALSE)
+
+#add ID column, index age and biomass to new dataframe
+z <- data.frame(1:nrow(z),z$Age, z$AGB) 
+names(z) <- list("ID","Age","Biomass")
+
+
+#change Age's with OG to 200
+#OG meant they were too old to detemine an age
+#we will put in age of 200
+z <- z %>%
+  mutate(Age = str_replace(Age, "OG", "200"))
+
+
+
+#change age from char to int
+z$Age <- as.numeric(as.character(z$Age))
+
+#see summary
+summary(z)
+
+#Can group ages into treatments
+#0-20 is young
+#21-199 is middle
+#200+ is old
+z <- split(z, cut(z$Age, c(0,20,199,200), include.lowest = TRUE))
+
+#Now that they're split here are their summary stats
+#Group Young
+young_num <- length(z$`[0,20]`$Biomass)
+young_mean <- mean(z$`[0,20]`$Biomass)
+young_var <- var(z$`[0,20]`$Biomass)
+
+#Group Middle
+middle_num <- length(z$`(20,199]`$Biomass)
+middle_mean <- mean(z$`(20,199]`$Biomass)
+middle_var <- var(z$`(20,199]`$Biomass)
+
+#Group Old
+old_num <- length(z$`(199,200]`$Biomass)
+old_mean <- mean(z$`(199,200]`$Biomass)
+old_var <- var(z$`(199,200]`$Biomass)
+```
+
+## Parameter Calculations
+
+However, since gamma uses parameters called shape and scale I had to calculate those from each groups mean and variance. Then the data could be simulated for each treatment age.
+
+> mean = shape * scale
+
+> variance = shape * scale^2^
+
+```{r}
+young_shape <- (young_mean^2)/young_var
+young_scale <- young_var/young_mean
+young_data <- rgamma(young_num, shape = young_shape,
+                     scale = young_scale)
+
+middle_shape <- (middle_mean^2)/middle_var
+middle_scale <- middle_var/middle_mean
+middle_data <- rgamma(middle_num, shape = middle_shape,
+                     scale = middle_scale)
+
+
+old_shape <- (old_mean^2)/old_var
+old_scale <- old_var/old_mean
+old_data <- rgamma(old_num, shape = old_shape,
+                     scale = old_scale)
+```
+
+## Dataframe construction
+
+With the newly simulated data another data frame needed to be constructed.
+
+```{r}
+#combine the treatment randomly generated biomass
+#into one vector
+vec_biomass <- c(young_data, middle_data, old_data)
+
+#make vector to hold the treatment name
+vec_treatment <- c(rep("Young", young_num), rep("Middle", middle_num), rep("Old", old_num))
+
+#Create the data frame and give it names
+rand_data <- data.frame(1:(young_num+middle_num+old_num),
+                        vec_treatment, vec_biomass)
+names(rand_data) <- list("ID", "Treatment", "Biomass")
+head(rand_data)
+```
+
+## ANOVA Test and Plot
+
+Now an ANOVA test could be run and plotted for the data.
+
+```{r}
+#Here we will make an ANOVA test and plot
+ANOmodel <- aov(Biomass~Treatment,data=rand_data)
+print(summary(ANOmodel))
+
+ANOplot <- ggplot(data=rand_data, aes(x=Treatment, y=Biomass,
+                                      fill = Treatment)) +
+  geom_boxplot()
+print(ANOplot)
+
+```
+
+## Adjusting Means
+
+Here the effective size is very small! Although the different groups do not all have the same mean, the treatments do in fact all have the same shape! Shape is related to mean and variance, so the fact that each treatment group could have the same shape and still get significant reults meant that the difference between the means were pretty small.
+
+```{r}
+#try to simulate data with same mean
+young_data1 <- rgamma(young_num, middle_shape, young_scale)
+middle_data1 <- rgamma(middle_num, middle_shape, middle_scale)
+old_data1 <- rgamma(old_num, middle_shape, old_scale)
+
+#combine the treatment randomly generated biomass
+#into one vector
+vec_biomass1 <- c(young_data1, middle_data1, old_data1)
+
+#Create the data frame and give it names
+rand_data1 <- data.frame(1:(young_num+middle_num+old_num),
+                         vec_treatment, vec_biomass1)
+names(rand_data1) <- list("ID", "Treatment", "Biomass")
+
+#Here we will make an ANOVA test and plot
+ANOmodel <- aov(Biomass~Treatment,data=rand_data1)
+print(summary(ANOmodel))
+
+ANOplot <- ggplot(data=rand_data1, aes(x=Treatment, y=Biomass,
+                                       fill = Treatment)) +
+  geom_boxplot()
+print(ANOplot)
+```
+
+## Adjusting Sample Sizes
+
+The sample size of these groups were done in proption again, like in the simulation with a normal model. However, the sample sizes were reduced by a factor of 19! That's a little over 50 trials for each treatment. These sizes of samples wer still succesful in producing significant p-values. This is likely because the gamma distribution was the best for this data! The variation is what probably limited this factor from being any larger and making even smaller sample sizes. However, compared to the smallest sample size with the normally simulated data these results are a shock.
+
+```{r}
+#try to simulate data with smaller sample sizes to see the minimum sample size needed to still have significant results
+young_data2 <- rgamma(ceiling(young_num/19), young_shape, young_scale)
+middle_data2 <- rgamma(ceiling(middle_num/19), middle_shape, middle_scale)
+old_data2 <- rgamma(ceiling(old_num/19), old_shape, old_scale)
+
+#combine the treatment randomly generated biomass
+#into one vector
+vec_biomass2 <- c(young_data2, middle_data2, old_data2)
+vec_treatment2 <- c(rep("Young", ceiling(young_num/19)), rep("Middle", ceiling(middle_num/19)), rep("Old", ceiling(old_num/19)))
+
+#Create the data frame and give it names
+rand_data2 <- data.frame(1:length(vec_treatment2),
+                         vec_treatment2, vec_biomass2)
+names(rand_data2) <- list("ID", "Treatment", "Biomass")
+
+#Here we will make an ANOVA test and plot
+ANOmodel <- aov(Biomass~Treatment,data=rand_data2)
+print(summary(ANOmodel))
+
+ANOplot <- ggplot(data=rand_data2, aes(x=Treatment, y=Biomass,
+                                       fill = Treatment)) +
+  geom_boxplot()
+print(ANOplot)
+```
+
+All of the values for smallest meand and smallest sample size were run several times to see if it could consistently produce results with p-values less than 0.05. However, with any simulate data there were some cases that the p-value was not significant. However, overall the changed data seemed to produce significant results.
+
+[Homepage](.\index.html)
