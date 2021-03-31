@@ -2,7 +2,10 @@
 title: "Homework_09"
 author: "Isaac Racine"
 date: "3/17/2021"
-output: html_document
+output:
+  prettydoc::html_pretty:
+  theme: leonids
+  highlight: github
 ---
 
 Below I will demonstrate structured programming. My functions are in a [source script](.\hw9_source.html). I also answered question 3 in this part by recording several trials in one data frame. The plot is only for the final simulated sample.

@@ -49,3 +49,11 @@ Spring 2020 I went to study abroad in Germany, but was able to stay despite Coro
 ### Homework 9
 
 - [Assignment 9](.\Homework_09.html)
+
+### Homework 10
+
+- [Assignment 10](.\Homework_10.html)
+
+### Homework 11
+
+- [Assignment 11](.\Homework_11.html)

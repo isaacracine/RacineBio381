@@ -1,0 +1,258 @@
+---
+title: "Homework_10.rmd"
+author: "Isaac Racine"
+date: "3/24/2021"
+output:
+  prettydoc::html_pretty:
+  theme: leonids
+  highlight: github
+---
+
+## Question 1
+
+Using a for loop, write a function to calculate the number of zeroes in a numeric vector. Before entering the loop, set up a counter variable counter <- 0. Inside the loop, add 1 to counter each time you have a zero in the matrix. Finally, use return(counter) for the output.
+
+
+```{r}
+#---------------------------------------
+# FUNCTION zero_loop_counter
+# description: will count all of the zeros in a vector using a for loop
+# inputs: a numeric vector or matrix
+# outputs: the number of elements that are euqal to 0
+########################################
+zero_loop_counter <- function(x = NULL) {
+  if(is.null(x)){
+    x <- c(rep(0:9, 3))}
+  
+  counter <- 0
+  
+  for(i in x){
+    if(i == 0){
+      counter = counter + 1}
+  }
+  
+  
+# function body
+
+return(counter)
+
+} # end of zero_loop_counter
+#---------------------------------------
+
+print(zero_loop_counter())
+zero_loop_counter(c(0,0,1,1,2,0,0,0,4,5))
+m <- matrix(rep(0:2, 4), nrow = 4)
+zero_loop_counter(m)
+                  
+```
+
+
+## Question 2
+
+Use subsetting instead of a loop to rewrite the function as a single line of code.
+
+```{r}
+#Use this format: length(vec[vec == 0])
+z <- c(0:3, 3:0)
+counter <- length(z[z==0])
+print(counter)
+````
+
+
+## Question 3
+
+Write a function that takes as input two integers representing the number of rows and columns in a matrix. The output is a matrix of these dimensions in which each element is the product of the row number x the column number.
+
+```{r}
+
+#---------------------------------------
+# FUNCTION matrix_maker
+# description: will make a matrix of passed dimensions, and each element of the matrix will be the product of the col and row num
+# inputs: two integers representing the col and row number
+# outputs: matrix with elements as the product of the row and col
+########################################
+matrix_maker <- function(row = NULL, col = NULL) {
+  if(is.null(row) && is.null(col)){
+    row = 2
+    col = 2
+    m <- matrix(nrow = 2, ncol = 2)
+  } else {
+    m <- matrix(nrow = row, ncol = col)}
+  
+  for (i in 1:nrow(m)){
+    for(j in 1:ncol(m)){
+      m[i,j] <- i * j}}
+
+return(m)
+
+} # end of matrix_maker
+#---------------------------------------
+matrix_maker()
+matrix_maker(6,4)
+matrix_maker(4,8)
+```
+
+## Question 4
+
+Use the code from the April 8th lecture (Randomization Tests) to design and conduct a randomization test for some of your own data. You will need to modify the functions that read in the data, calculate the metric, and randomize the data. Once those are set up, the program should run correctly calling your new functions. Also, to make your analysis fully repeatable, make sure you set the random number seed at the beginning (use either set.seed() in base R, or char2seed in the TeachingDemos package
+
+```{r}
+#---------------------------------------
+# FUNCTION read_data
+# description: read in (or generate) data set for analysis
+# inputs: file anem (or nothing as in this demo)
+# outputs: 3 col data frame of obs data (ID, x, y)
+########################################
+read_data <- function(z = NULL) {
+  if(is.null(z)){
+    x_obs <- 1:20
+    y_obs <- x_obs + 10 * rnorm(20)
+    df <- data.frame(ID = seq_along(x_obs),
+                     x_obs,
+                     y_obs)
+  } else {
+    df <- read.table(file = z,
+                     header = TRUE,
+                     sep = ",",
+                     stringsAsFactors = FALSE)}
+  
+  return(df)
+  
+} # end of read_data
+#---------------------------------------
+
+
+#---------------------------------------
+# FUNCTION get_metric
+# description: calculate metric for randomization test
+# inputs: 2-col data frame for regression
+# outputs: regression slope
+########################################
+get_metric <- function(z = NULL) {
+  if(is.null(z)){
+    x_obs <- 1:20
+    y_obs <- x_obs + 10 * rnorm(20)
+    z <- data.frame(ID = seq_along(x_obs), 
+                    x_obs,
+                    y_obs)}
+  . <- lm(z[,3]~z[,2])  #3 col is y var, 2 is xvar
+  . <- summary(.)
+  
+  . <- .$coefficients[2,1] # grabbing matrix and getting slope
+  slope <- .
+  
+  return(slope)
+  
+} # end of get_metric
+#---------------------------------------
+
+#---------------------------------------
+# FUNCTION shuffle_data
+# description: randomize data for a regression analysis
+# inputs: 3 col data frame (ID, xvar, yvar)
+# outputs: 3 col data frame (ID, xvar, yvar)
+########################################
+shuffle_data <- function(z = NULL) {
+  if(is.null(z)){
+    x_obs <- 1:20
+    y_obs <- x_obs + 10 * rnorm(20)
+    z <- data.frame(ID = seq_along(x_obs),
+                    x_obs,
+                    y_obs)}
+  z[,3] <- sample(z[,3])
+  
+  return(z)
+  
+} # end of shuffle_data
+#---------------------------------------
+
+#---------------------------------------
+# FUNCTION get_pval
+# description: calculate p-val from simulation
+# inputs: list of observed metric and vector of simulated metrics
+# outputs: lower and upper tail probability
+########################################
+get_pval <- function(z = NULL) {
+  if(is.null(z)){
+    z <- list(rnorm(1), rnorm(1000))}
+  p_lower <- mean(z[[2]] <= z [[1]])
+  #what is the proportion of the simulated values less than the obs values
+  
+  p_upper <- mean(z[[2]] >= z[[1]])
+  
+  return(c(pL = p_lower,pU = p_upper))
+  
+} # end of get_pval
+#---------------------------------------
+
+
+#---------------------------------------
+# FUNCTION plot_ran_test
+# description: create a ggplot of histogram of simulated values
+# inputs: list of obs metric and vector simulated metrics
+# outputs: saved ggplot graph
+########################################
+library(ggplot2)
+plot_ran_test <- function(z = NULL) {
+  if(is.null(z)){
+    z <- list(rnorm(1), rnorm(1000))}
+  df <- data.frame(ID = seq_along(z[[2]]), sim_x = z [[2]])
+  p1 <- ggplot(data = df, mapping = aes(x = sim_x))
+  p1 + geom_histogram(mapping = aes(fill = I("goldenrod"),
+                                    color = I("black"))) +
+    geom_vline(aes(xintercept = z [[1]], col = "blue"))
+  
+  
+  
+} # end of plot_ran_test
+#---------------------------------------
+
+#set seed
+set.seed(81)
+
+#read data in
+data <- read_data("CleanedAbovegroundData.csv")
+
+# Remove one of the ID columns because now there are two
+data <- data[-c(1)] 
+
+# get the slope for regression
+x_obs <- get_metric(data)
+
+# declare number of samples
+n_samples <- 1000
+
+# set up empty vector for simulated slopes
+x_sim <- rep(NA, n_samples)
+
+#loop through to calculate several simulated means
+for(i in seq_len(n_samples)){
+  x_sim[i] <- get_metric(shuffle_data(data))}  
+
+#make list of slopes
+slopes <- list(x_obs, x_sim)
+
+#get upper and lower tails
+get_pval(slopes)
+
+#plot the simulated slopes
+plot_ran_test(slopes)
+```
+
+Clearly there is an association, likely that older forest age is associated with a higher amount of above ground biomass! This can be infered given that even when different seeds were set all the results were very singificant with the regression slops of the actual data being so far above that of any simulated data.
+
+## Question 5
+
+For comparison, calculate in R the standard statistical analysis you would use with these data. How does the p-value compare for the standard test versus the p value you estimated from your randomization test? If the p values seem very different, run the program again with a different starting seed (and/or increase the number of replications in your randomization test). If there are persistent differences in the p value of the standard test versus your randomization, what do you think is responsible for this difference?
+
+```{r}
+reg <- lm(data$Biomass~data$Age)
+
+# here is the p-value
+summary(reg)$coefficients[2,4]
+```
+
+The p-value calculated from a standard statistical analysis using linear regression found a p-value of basically 0. This p-value matches the p-values estimated from the randomization test! There are no differences, both p-values are 0. This just means there is basically no chance, or a very tiny one, of all of the observed data happening by chance! There likely is an association between a forest plot's age and aboveground biomass.
+
+
+[Homepage](.\index.html)

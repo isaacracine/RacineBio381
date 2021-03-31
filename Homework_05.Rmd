@@ -2,7 +2,10 @@
 title: "Homework_5"
 author: "Isaac Racine"
 date: "2/17/2021"
-output: html_document
+output:
+  prettydoc::html_pretty:
+  theme: leonids
+  highlight: github
 ---
 
 Below is my R code for homework assignment 5! It is embedded in R code blocks!

@@ -2,7 +2,10 @@
 title: "hw9_source"
 author: "Isaac Racine"
 date: "3/17/2021"
-output: html_document
+output:
+  prettydoc::html_pretty:
+  theme: leonids
+  highlight: github
 ---
 [Assignment 9](.\Homework_09.html)
 

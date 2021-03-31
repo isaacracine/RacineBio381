@@ -26,7 +26,7 @@ z <- z %>%
 
 #change age from char to int
 z$Age <- as.numeric(as.character(z$Age))
-
+#write.csv(z, "C:\\Users\\isaac\\Documents\\R\\BIOL_381\\RacineBio381\\CleanedAbovegroundData.csv")
 #see summary
 summary(z)
 
